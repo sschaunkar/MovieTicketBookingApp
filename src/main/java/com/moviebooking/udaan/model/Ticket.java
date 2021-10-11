@@ -16,10 +16,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @Builder
 @ToString
-public class BookingTicket {
+public class Ticket {
 	
   private BigDecimal ticketNo;
-  private List<BookingSeat> bookingSeat;
+  private List<Seat> bookingSeat;
   private BigDecimal billAmount;
   private String timeSlot;
 //  private String showName;

@@ -7,6 +7,7 @@ public enum ErrorCode {
 	BAD_REQUEST(HttpStatus.BAD_REQUEST, "Please check your request"),
 	UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "unauthorized to perform this action"),
 	ALREADY_BOOKED(HttpStatus.UNPROCESSABLE_ENTITY, "Requested Seats already Booked"),
+	DUPLICATE_SEATS(HttpStatus.UNPROCESSABLE_ENTITY, "Duplicate Seats not Allowed"),
 	NO_RECORDS_FOUND(HttpStatus.NO_CONTENT, "No Records Found"), 
 	MISSING_REQUIRED_FIELDS(HttpStatus.BAD_REQUEST, "Please check your request"), 
 	HOUSE_FULL(HttpStatus.UNPROCESSABLE_ENTITY, "Seats are already full"),

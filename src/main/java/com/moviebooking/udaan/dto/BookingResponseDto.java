@@ -2,8 +2,8 @@ package com.moviebooking.udaan.dto;
 
 import java.util.List;
 
-import com.moviebooking.udaan.model.BookingSeat;
-import com.moviebooking.udaan.model.BookingTicket;
+import com.moviebooking.udaan.model.Seat;
+import com.moviebooking.udaan.model.Ticket;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,5 +17,5 @@ import lombok.ToString;
 @ToString
 @Builder
 public class BookingResponseDto {
-	private BookingTicket ticketdetails;
+	private Ticket ticketdetails;
 }

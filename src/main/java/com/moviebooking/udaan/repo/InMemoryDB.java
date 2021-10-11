@@ -10,8 +10,8 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
 import com.moviebooking.udaan.enums.SeatCategory;
-import com.moviebooking.udaan.model.BookingSeat;
-import com.moviebooking.udaan.model.BookingTicket;
+import com.moviebooking.udaan.model.Seat;
+import com.moviebooking.udaan.model.Ticket;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,13 +19,13 @@ import lombok.Setter;
 public class InMemoryDB {
 	@Getter
 	@Setter
-	private Map<String, Map<SeatCategory,List<BookingSeat>>> seatByTimeSlot;
+	private Map<String, Map<SeatCategory,List<Seat>>> seatByTimeSlot;
 	@Getter
 	@Setter
-	private Map<String,Map<String, Map<SeatCategory,List<BookingSeat>>>> multiaudi;
+	private Map<String,Map<String, Map<SeatCategory,List<Seat>>>> multiaudi;
 	@Getter
 	@Setter
-	private Map<String,List<BookingTicket>> ticketHistory;
+	private Map<String,List<Ticket>> ticketHistory;
 	
 	
 	@PostConstruct
@@ -34,20 +34,20 @@ public class InMemoryDB {
 		ticketHistory = new HashMap<>();
 		multiaudi = new HashMap<>();
 		// TODO: Iterate over timeslow and create seats for both the time slot
-		List<BookingSeat> listOfFrontSeat = new ArrayList<>();
+		List<Seat> listOfFrontSeat = new ArrayList<>();
 		for(int i=0; i<SeatCategory.FRONT.maxSeatAvailable();i++) {
-			BookingSeat seat = BookingSeat.builder().category(SeatCategory.FRONT)
+			Seat seat = Seat.builder().category(SeatCategory.FRONT)
 					.isBooked(false).seatno(i+"").build();
 			listOfFrontSeat.add(seat);
 		}
-		List<BookingSeat> listOfBackSeat = new ArrayList<>();
+		List<Seat> listOfBackSeat = new ArrayList<>();
 		for(int i=0; i<SeatCategory.BACK.maxSeatAvailable();i++) {
-			BookingSeat seat = BookingSeat.builder().category(SeatCategory.BACK)
+			Seat seat = Seat.builder().category(SeatCategory.BACK)
 			.isBooked(false).seatno(i+"").build();
 			listOfBackSeat.add(seat);
 			
 		}
-		Map<SeatCategory,List<BookingSeat>> mapOfSeatCategory = new HashMap<>();
+		Map<SeatCategory,List<Seat>> mapOfSeatCategory = new HashMap<>();
 		mapOfSeatCategory.put(SeatCategory.BACK, listOfBackSeat);
 		mapOfSeatCategory.put(SeatCategory.FRONT, listOfFrontSeat);
 		seatByTimeSlot.put("timeslot1", mapOfSeatCategory);
@@ -57,7 +57,7 @@ public class InMemoryDB {
 		
 	}
 	
-	public void updateTicketHistory(Map<String,List<BookingTicket>> ticketHistory) {
+	public void updateTicketHistory(Map<String,List<Ticket>> ticketHistory) {
 		this.ticketHistory = ticketHistory;
 	}
 }
